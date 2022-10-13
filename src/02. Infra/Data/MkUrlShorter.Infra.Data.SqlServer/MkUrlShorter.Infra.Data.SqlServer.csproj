@@ -12,8 +12,4 @@
     <ProjectReference Include="..\..\..\01. Core\MkUrlShorter.Core.Domain\MkUrlShorter.Core.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configs\" />
-  </ItemGroup>
-
 </Project>
