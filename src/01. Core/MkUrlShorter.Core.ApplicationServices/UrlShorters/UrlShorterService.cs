@@ -16,6 +16,9 @@ namespace MkUrlShorter.Core.ApplicationServices.UrlShorters
     {
         private readonly IUrlShorterRepository urlShorterRepository;
 
+        // it should be load from siteSetting
+        private const string PrefixAddress = "https://localhost:44369/";
+
         public UrlShorterService(IUrlShorterRepository mkUrlShorterDbContext)
         {
             this.urlShorterRepository = mkUrlShorterDbContext;
@@ -32,10 +35,13 @@ namespace MkUrlShorter.Core.ApplicationServices.UrlShorters
                 dbModel = new UrlShorter()
                 {
                     MainUrl = mainUrl,
-                    ShortUrl = GenerateShorterUrl()
+                    ShortUrl = PrefixAddress + GenerateShorterUrl()
                 };
 
-                return ServiceResultDto<string>.Ok(dbModel.ShortUrl);
+                if (await urlShorterRepository.Add(dbModel) > 0)
+                    return ServiceResultDto<string>.Ok(dbModel.ShortUrl);
+                else
+                    return ServiceResultDto<string>.NotOk("not saved");
             }
             catch (Exception ex)
             {
@@ -47,7 +53,7 @@ namespace MkUrlShorter.Core.ApplicationServices.UrlShorters
         public async Task<ServiceResultDto<UrlShorter>> GetByShortUrl(string shortUrl)
         {
             var dbModel = await urlShorterRepository.GetByShortUrl(shortUrl);
-            if(dbModel == null)
+            if (dbModel == null)
                 return ServiceResultDto<UrlShorter>.NotOk("not exist");
 
             await urlShorterRepository.AddViewCount(dbModel.Id);

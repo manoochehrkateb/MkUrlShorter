@@ -17,6 +17,6 @@ namespace MkUrlShorter.Infra.Data.SqlServer
         }
 
 
-        public virtual DbSet<UrlShorter> UrlShorters { get; set; }
+        public DbSet<UrlShorter> UrlShorters { get; set; }
     }
 }

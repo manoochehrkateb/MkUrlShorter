@@ -20,6 +20,7 @@ namespace MkUrlShorter.Infra.Data.SqlServer.Implements
         public async Task<long> Add(UrlShorter urlShorter)
         {
             await context.UrlShorters.AddAsync(urlShorter);
+            await context.SaveChangesAsync();
             return urlShorter.Id;
         }
 
