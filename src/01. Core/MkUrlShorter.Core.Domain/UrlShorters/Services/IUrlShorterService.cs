@@ -11,6 +11,5 @@ namespace MkUrlShorter.Core.Domain.UrlShorters.Services
     {
         Task<ServiceResultDto<string>> Add(string mainUrl);
         Task<ServiceResultDto<UrlShorter>> GetByShortUrl(string shortUrl);
-        Task<ServiceResultDto<bool>> AddViewCount(int id);
     }
 }
