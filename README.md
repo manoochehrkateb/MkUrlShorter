@@ -1,5 +1,7 @@
 # MkUrlShorter
 
+این پروژه صرفا برای نحوه ارزیابی سینتک و ست آپ کلی اپلیکیشن نوشته شده است و برای تحلیل بیزنس و یا ارزیابی معماری و ... قابل ارزیابی واقعی نیست . 
+
 look screen shots for test :
 
 ![image](https://user-images.githubusercontent.com/15786908/195571841-4b951c2e-2440-4253-a896-bcefce6979c3.png)
