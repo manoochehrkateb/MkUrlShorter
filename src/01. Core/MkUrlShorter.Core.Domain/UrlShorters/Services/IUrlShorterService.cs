@@ -11,5 +11,6 @@ namespace MkUrlShorter.Core.Domain.UrlShorters.Services
     {
         Task<ServiceResultDto<string>> Add(string mainUrl);
         Task<ServiceResultDto<UrlShorter>> GetByShortUrl(string shortUrl);
+        Task<ServiceResultDto<IList<UrlShorter>>> GetPaging(int pageIndex = 0, int pageSize = 10);
     }
 }

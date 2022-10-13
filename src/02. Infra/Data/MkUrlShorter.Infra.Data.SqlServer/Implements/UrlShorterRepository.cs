@@ -3,6 +3,7 @@ using MkUrlShorter.Core.Domain.UrlShorters.Entities;
 using MkUrlShorter.Infra.Data.SqlServer.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +45,11 @@ namespace MkUrlShorter.Infra.Data.SqlServer.Implements
         public async Task<UrlShorter> GetByShortUrl(string shortUrl)
         {
             return await context.UrlShorters.FirstOrDefaultAsync(f => f.ShortUrl == shortUrl);
+        }
+
+        public async Task<IList<UrlShorter>> GetPaging(int pageIndex = 0, int pageSize = 10)
+        {
+            return await context.UrlShorters.Skip(pageIndex * pageSize).Take(pageSize).ToListAsync();
         }
     }
 }

@@ -60,6 +60,12 @@ namespace MkUrlShorter.Core.ApplicationServices.UrlShorters
 
             return ServiceResultDto<UrlShorter>.Ok(dbModel);
         }
+        public async Task<ServiceResultDto<IList<UrlShorter>>> GetPaging(int pageIndex = 0, int pageSize = 10)
+        {
+            var items = await urlShorterRepository.GetPaging(pageIndex, pageSize);
+
+            return ServiceResultDto<IList<UrlShorter>>.Ok(items);
+        }
 
 
         #region private methods

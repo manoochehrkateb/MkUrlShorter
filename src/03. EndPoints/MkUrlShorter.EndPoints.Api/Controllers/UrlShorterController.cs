@@ -32,5 +32,14 @@ namespace MkUrlShorter.EndPoints.Api.Controllers
 
             return new JsonResult(response);
         }
+
+        [HttpGet]
+        [Route("GetPaging")]
+        public async Task<IActionResult> GetPaging(int pageIndex = 0 , int pageSize = 10)
+        {
+            var response = await urlShorterService.GetPaging(pageIndex,pageSize);
+
+            return new JsonResult(response);
+        }
     }
 }

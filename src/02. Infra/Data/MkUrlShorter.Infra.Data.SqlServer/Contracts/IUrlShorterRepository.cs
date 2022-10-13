@@ -14,5 +14,6 @@ namespace MkUrlShorter.Infra.Data.SqlServer.Contracts
         Task AddViewCount(long id);
         Task<UrlShorter> GetByMainUrl(string mainUrl);
         Task<UrlShorter> GetByShortUrl(string shortUrl);
+        Task<IList<UrlShorter>> GetPaging(int pageIndex = 0, int pageSize = 10);
     }
 }
